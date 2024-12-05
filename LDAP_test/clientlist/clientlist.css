@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.main-section {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.table-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    min-height: 60px; 
+    vertical-align: middle; 
+}
+
+.table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: #333;
+}
+
+.logo-cell {
+    width: 50px;  
+}
+
+.logo-placeholder {
+    width: 40px; 
+    height: 40px;
+    background-color: #e0e0e0; 
+    border-radius: 5px; 
+    margin: 0 auto; 
+}
+
+.card-content h2 {
+    font-size: 16px;
+    color: #333;
+    margin-left: 10px; 
+    line-height: 2.5;
+}
+
+.card-content a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-content a:hover h2 {
+    text-decoration: underline;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-container h2 {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.logo-header {
+    position: fixed;
+    top: 10px;  
+    left: 10px; 
+    width: 100px; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.add-button, .delete-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    color: white;
+    background-color: #28a745; /* Vert pour "Ajouter" */
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Rouge pour "Supprimer" */
+}
+
+.add-button:hover {
+    background-color: #218838;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.back-button {
+    position: fixed;
+    bottom: 20px; 
+    left: 20px;   
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+    background-color: transparent; 
+    border: none; 
+    color: red; 
+    font-size: 30px; 
+    cursor: pointer;  
+    padding: 0 10px; 
+}
+
+.btn-delete:hover {
+    color: darkred; /
+}
+
+.row-checkbox {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+
+
