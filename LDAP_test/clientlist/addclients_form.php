@@ -1,5 +1,5 @@
 <?php
-include '../database/db.php';
+require_once '../database/db.php';
 include '../database/partner_request.php';
 ?>
 <!DOCTYPE html>

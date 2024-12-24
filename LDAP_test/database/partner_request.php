@@ -4,7 +4,8 @@
 class ShowPartnerForm {
 
     private $pdo;
-    private $PartnerRecoverySQLRequest = "SELECT * FROM partenaires";
+    private $PartnerRecoverySQLRequest = "SELECT * FROM Partenaires";
+    private $PartnerRecoveryByIdSQLRequest = "SELECT * FROM Partenaires WHERE idpartenaires = [0] ";
 
     // Constructeur pour initialiser la connexion PDO
     function __construct($pdo) {
@@ -13,16 +14,24 @@ class ShowPartnerForm {
 
     // Récupération de tous les partenaires
     function PartnerRecovery() {
-
         $stmt = $this->pdo->prepare($this->PartnerRecoverySQLRequest);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
+    
+     // Récupération d'un partenaire par son id
+    function PartnerRecoveryById($idpartenaire) {
+				$sqlrequest = str_replace("[0]", $idpartenaire,$this->PartnerRecoveryByIdSQLRequest);
+        $stmt = $this->pdo->prepare($sqlrequest);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     // Ajouter un partenaire à partir d'un formulaire
     function addPartnerRecovery($nom, $email, $telephone, $adresse) {
         // Préparer la requête SQL
-        $sql_Partner = "INSERT INTO partenaires (Nom, Email, Telephone, Adresse)
+        $sql_Partner = "INSERT INTO Partenaires (Nom, Email, Telephone, Adresse)
                         VALUES (:Nom, :Email, :Telephone, :Adresse)";
 
         // Préparer la requête avec PDO

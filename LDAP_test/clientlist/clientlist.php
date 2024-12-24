@@ -1,6 +1,11 @@
 <?php
-include '../database/db.php';
+require_once '../database/db.php';
 include '../database/partner_request.php';
+include '../database/clients_request.php';
+
+//Temporaire pour le développement :
+$_POST['idpartenaires'] = 2;
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,12 +21,12 @@ include '../database/partner_request.php';
 
     <section class="main-section">
         <div class="title-container">
-            <h1>Liste Des Clients Finaux pour : </h1> 
+            <h1>Liste des clients pour : 
             <?php
             //récupération de l'id partenaire pour afficher le bon nom + vérification de l'id dans l'URL
             //Vérification de l'id dans l'URL
-            if (isset($_GET['idpartenaires'])) {
-                $partnerId = intval($_GET['idpartenaires']);
+            if (isset($_POST['idpartenaires'])) {
+                $partnerId = intval($_POST['idpartenaires']);
                 $partnerName = null;
 
                 //recherche du partenaire en fonction de l'id
@@ -34,17 +39,17 @@ include '../database/partner_request.php';
 
                 //affichage du nom correspondant a l'id
                 if ($partnerName) {
-                    echo '<p>' . $partnerName . '</p>';
+                    echo $partnerName;
                 }   else {
-                    echo '<p>Partenaire non trouvé.</p>';
+                    echo 'Partenaire non trouvé.';
                 }
             }   else {
-                echo "<p> Aucun idenifiant de partenaire fourni.</P>";
+                echo " Aucun idenifiant de partenaire fourni.";
                 exit; //coupe l'éxecution si l'ID n'est pas défini
             }
             
-            // echo '<p>' . htmlspecialchars($partnerName) . '</p>'; 
-            ?>
+            // echo '<p>' . htmlspecialchars($partnerName) . '</p>'; */
+            ?></h1> 
         </div>
 
         <div class="button-container">
@@ -59,87 +64,46 @@ include '../database/partner_request.php';
                         <th>Logo</th> 
                         <th>Nom</th>
                         <th>Téléphone</th>
-                        <th>Code postal</th>
-                        <th>Contact</th>
-                        <th>Supprimer</th>
+                        <th>Adresse</th>
+                        <?php
+                        	if (isset($_POST['idpartenaires'])) {
+                        		if ($_POST['idpartenaires'] == 0){
+                       				echo "<th>Partenaire</th>";
+                       			}
+                        	}
+                        ?>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="client-list">
-                    <tr>
-                        <td><input type="checkbox" class="client-checkbox"></td>
-                        <td class="logo-cell">
-                            <div class="logo-placeholder"></div>
-                        </td>
-                        <td class="card-content">
-                            <a href="../annuaire/annuaire.php">
-                                <h2>Centre omnisport de Mâcon</h2>
-                            </a>
-                        </td>
-                        <td>03 85 32 32 10</td>
-                        <td>71000</td>
-                        <td>ADV</td>
-                        <td><button class="btn-delete">✖</button></td>
-                    </tr>
-                    <tr>
-                    <td><input type="checkbox" class="client-checkbox"></td>
-                        <td class="logo-cell">
-                            <div class="logo-placeholder"></div>
-                        </td>
-                        <td class="card-content">
-                            <a href="client2.html">
-                                <h2>Pharmacie des vignes</h2>
-                            </a>
-                        </td>
-                        <td>06 33 89 05 29</td>
-                        <td>67400</td>
-                        <td>ADV</td>
-                        <td><button class="btn-delete">✖</button></td>
-                    </tr>
-                    <tr>
-                    <td><input type="checkbox" class="client-checkbox"></td>
-                        <td class="logo-cell">
-                            <div class="logo-placeholder"></div>
-                        </td>
-                        <td class="card-content">
-                            <a href="client3.html">
-                                <h2>Société X</h2>
-                            </a>
-                        </td>
-                        <td>01 23 45 67 89</td>
-                        <td>75000</td>
-                        <td>ADV</td>
-                        <td><button class="btn-delete">✖</button></td>
-                    </tr>
-                    <tr>
-                    <td><input type="checkbox" class="client-checkbox"></td>
-                        <td class="logo-cell">
-                            <div class="logo-placeholder"></div>
-                        </td>
-                        <td class="card-content">
-                            <a href="client4.html">
-                                <h2>Boulangerie du coin</h2>
-                            </a>
-                        </td>
-                        <td>04 56 78 90 12</td>
-                        <td>69000</td>
-                        <td>ADV</td>
-                        <td><button class="btn-delete">✖</button></td>
-                    </tr>
-                    <tr>
-                    <td><input type="checkbox" class="client-checkbox"></td>
-                        <td class="logo-cell">
-                            <div class="logo-placeholder"></div>
-                        </td>
-                        <td class="card-content">
-                            <a href="client5.html">
-                                <h2>Restaurant du Sud</h2>
-                            </a>
-                        </td>
-                        <td>07 89 01 23 45</td>
-                        <td>13000</td>
-                        <td>ADV</td>
-                        <td><button class="btn-delete">✖</button></td>
-                    </tr>
+                	
+                <?php
+                	if (isset($_POST['idpartenaires'])) {
+                		$Clients = $ClientsForm->ClientsRecoveryByPartenaire($partnerId);
+                		
+                		foreach ($Clients as $client){
+                			 echo "<tr>";
+                			 echo "<td><input type=\"checkbox\" class=\"client-checkbox\"></td>";
+                       echo "<td class=\"logo-cell\">";
+                       echo "<div class=\"logo-placeholder\"></div>";
+                       echo "</td>";
+                       echo "<td class=\"card-content\">";
+                       echo "<a href=\"../clientdetail/clientdetail.php?idclient=$client[idclients]\">";
+                       echo "<h2>$client[Nom]</h2>";
+                       echo "</a>";
+                       echo "</td>";
+                       echo "<td>$client[Telephone]</td>";
+                       echo "<td>$client[Adresse]</td>";
+                       if ($_POST['idpartenaires'] == 0){
+                       	//A faire : afficher le nom à la place de l'id
+                       	 echo "<td>$client[partenaires_partenairesid]</td>";
+                       }
+                       echo "<td><button class=\"btn-delete\">✖</button></td>";
+                       echo "</tr>";              			
+                		}
+                	}
+                	
+                ?>
                 </tbody>
             </table>
         </div>

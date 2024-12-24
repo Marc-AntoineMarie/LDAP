@@ -79,3 +79,40 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+//ajout d'un contact
+
+document.getElementById('add-client').addEventListener('click', function () {
+    const firstName = prompt("Entrez le prénom du client :");
+    const lastName = prompt("Entrez le nom du client :");
+    const email = prompt("Entrez l'email du client :");
+    const extension = prompt("Entrez l'extension du client :");
+    const code = prompt("Entrez le code du client :");
+
+    if (firstName && lastName && email && extension && code) {
+        fetch('annuaire.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                action: 'add_contact',
+                firstname: firstName,
+                lastname: lastName,
+                email: email,
+                extension: extension,
+                code: code,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    alert('Contact ajouté avec succès');
+                    location.reload(); // Recharge la page pour afficher le contact ajouté
+                } else {
+                    alert('Erreur : ' + data.message);
+                }
+            })
+            .catch((error) => console.error('Erreur :', error));
+    }
+});

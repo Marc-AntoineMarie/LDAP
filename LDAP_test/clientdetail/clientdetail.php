@@ -1,0 +1,154 @@
+<?php
+require_once("../database/db.php");
+include '../database/clients_request.php';
+include '../database/utilisateurs_request.php';
+
+if (!isset($pdo)) {
+    die("Erreur : La connexion PDO n'est toujours pas initialisée.");
+}else{
+    //Je commente outrageusement ton caca
+    //echo 'annuaire.php -> ok caca | ';
+}
+
+$idclient = $_GET['idclient'];
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion du client</title>
+    <link rel="stylesheet" href="clientdetail.css">
+</head>
+<body>
+
+    <!-- Barre latérale -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../logo/Logo-ldap.png" alt="Logo" class="logo-sidebar">
+						<table>
+                <tbody>
+                	<?php
+                	
+                		$client = $ClientsForm->ClientsRecoveryById($idclient)[0];
+                		
+                		echo "<tr>";
+                		echo "<td>$client[Nom]</td>";
+                		echo "<td><button class='btn-delete'><img src=\"../logo/Editer.png\"></button></td>";
+                		echo "</tr>";
+                		
+                		echo "<tr>";
+                		if ($client['Email'] != "") echo "<td>$client[Email]</td>";
+                		else echo "<td><i>Email non défini</i></td>";
+                		echo "<td><button class='btn-delete'><img src=\"../logo/Editer.png\"></button></td>";
+                		echo "</tr>";
+                		
+                		echo "<tr>";
+                		if ($client['Telephone'] != "") echo "<td>$client[Telephone]</td>";
+                		else echo "<td><i>Numéro non défini</i></td>";
+                		echo "<td><button class='btn-delete'><img src=\"../logo/Editer.png\"></button></td>";
+                		echo "</tr>";
+                		
+                		echo "<tr>";
+                		if ($client['Adresse'] != "") echo "<td>$client[Adresse]</td>";
+                		else echo "<td><i>Adresse non définie</i></td>";
+                		echo "<td><button class='btn-delete'><img src=\"../logo/Editer.png\"></button></td>";
+                		echo "</tr>";
+                		
+                		echo "<tr>";
+                		if ($client['Plateforme'] != "") echo "<td>$client[Plateforme]</td>";
+                		else echo "<td><i>Plateforme non définie</i></td>";
+                		echo "<td><button class='btn-delete'><img src=\"../logo/Editer.png\"></button></td>";
+                		echo "</tr>";
+                		
+                		echo "<tr>";
+                		if ($client['PlateformeURL'] != "") echo "<td>$client[PlateformeURL]</td>";
+                		else echo "<td><i>Infos plateforme non définies</i></td>";
+                		echo "<td><button class='btn-delete'><img src=\"../logo/Editer.png\"></button></td>";
+                		echo "</tr>";
+                	
+                	?>
+                	
+                	
+                	
+             </table>
+        </div>
+    </aside>
+
+    <!-- Contenu principal -->
+   <main class="main-content">
+        <header class="main-header">
+            <h1>Administration d'un client</h1>
+            <div class="action-buttons">
+                <div class="button-container">
+                    <form method="post" style="display: inline;">
+                        <button name="gerer_annuaire" class="action-button">Gérer l'annuaire</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+
+        <section class="table-section">
+            <h3>Liste des utilisateurs</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Extension</th>
+                        <th>Type poste</th>
+                        <th>MAC</th>
+                        <th>SIPLog</th>
+                        <th>SIPPass</th>
+                        <th>SIPSRV</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="contact-list">
+                    <?php
+                    
+                    $utilisateurs = $UtilisateursForm->UtilisateursRecoveryByClient($idclient);
+                    
+                    
+                    foreach ($utilisateurs as $utilisateur) {
+	                     echo "<tr>
+                            <td>" . htmlspecialchars($utilisateur['Nom']) . "</td>
+                            <td>$utilisateur[Extension]</td>
+                            <td>$utilisateur[TypePoste]</td>
+                            <td>$utilisateur[AdresseMAC]</td>
+                            <td>$utilisateur[SIPLogin]</td>
+                            <td>$utilisateur[SIPPassword]</td>
+                            <td>$utilisateur[SIPServeur]</td>
+                            <td><form method='POST' action=\"../utilisateurdetail/utilisateurdetail.php\" style='display:inline;'>
+                            <input type='hidden' name='idutilisateur' value='$utilisateur[idutilisateurs]'>
+                            <input type='hidden' name='idclient' value='$idclient'>
+                            <button class='btn-delete' type='submit'><img src=\"../logo/Editer2.png\"></button></form><button class='btn-delete' data-id='" . $contact['idAnnuaire'] . "'>✖</button></td>
+                        </tr>";
+                    }
+                     
+                    // Récupération des contacts associés au client
+                    /*$contacts = $annuaireManager->getAnnuaireByClient($clientsId);
+                    foreach ($contacts as $contact) {
+                        echo "<tr>
+                            <td><input type='checkbox' class='contact-checkbox'></td>
+                            <td>" . htmlspecialchars($contact['Nom']) . "</td>
+                            <td>" . htmlspecialchars($contact['Adresse']) . "</td>
+                            <td>" . htmlspecialchars($contact['Telephone']) . "</td>
+                            <td>" . htmlspecialchars($contact['Email']) . "</td>
+                            <td><button class='btn-delete' data-id='" . $contact['idAnnuaire'] . "'>✖</button></td>
+                        </tr>";
+                    }*/
+                    ?>
+               </tbody>
+            </table>
+        </section>
+    </main>
+
+    <a href="javascript:history.back()" class="back-button">Revenir en arrière</a>
+
+    <script src="annuaire.js"></script>
+</body>
+</html>
