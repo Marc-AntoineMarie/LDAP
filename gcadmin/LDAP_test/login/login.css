@@ -1,0 +1,74 @@
+body {
+    background-color: #aeb3ae70;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    min-height: 100vh; /* Assure que la hauteur couvre toute la fenêtre */
+    margin: 0; /* Supprime les marges par défaut */
+}
+
+.login-container {
+    max-width: 575px;
+    width: 100%; /* Assure que le container est responsive */
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les enfants horizontalement */
+    justify-content: center; /* Centre les enfants verticalement */
+    padding: 20px;
+}
+
+.form-section {
+    width: 100%;
+    padding: 40px;
+    text-align: center; /* Centre le texte à l'intérieur */
+}
+
+.form-section h3 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+    text-align: center; /* Centre le titre */
+}
+
+.form-section p {
+    text-align: center; /* Centre les paragraphes */
+}
+
+.form-check {
+    text-align: left; /* Permet de garder un bon alignement des cases à cocher */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.form-check-label {
+    color: #666;
+}
+
+.link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.form-label {
+    display: block; /* Assure que le label occupe une ligne complète */
+    text-align: left; /* Aligne le texte à gauche */
+    font-weight: bold; /* Optionnel : pour rendre le texte du label plus visible */
+    color: #333; /* Optionnel : personnalise la couleur du label */
+    margin-bottom: 5px; /* Ajoute un espace entre le label et l'input */
+}

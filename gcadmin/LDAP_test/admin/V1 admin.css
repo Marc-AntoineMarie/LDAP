@@ -1,0 +1,163 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: white;
+    color: #333;
+}
+
+/* Logo Styles */
+.logo img {
+    width: 100px;
+}
+
+.container-body {
+    margin-left: 15%;
+    margin-right: 15%; 
+    margin-top: 0%;
+}
+
+header {
+    display: flex;
+    justify-content: flex-start;  
+    align-items: center;          
+    padding: 40px;
+    background-color: white;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #f7f7f7;
+}
+
+.hero h1 {
+    font-size: 48px;
+}
+
+#animatedText {
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+    background: linear-gradient(90deg, 
+        #40e0d0, #2ec4b6, #3b83bd, #4a69bd, #673ab7, #9145b6, #b24592, #f472b6, 
+        #ff7f50, #ff8c69, #ffa07a, #ffc107, #ff5722, #ff1493, #e91e63, #c71585, 
+        #b24592, #673ab7, #4a69bd, #3b83bd, #2ec4b6, #40e0d0);
+    background-size: 300% 300%;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Partners Section */
+.partners {
+    padding: 50px;
+}
+
+.partners h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.container-carré {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.carré {
+    display: block;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+}
+
+.carré:hover {
+    transform: scale(1.05);
+}
+
+.carré img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.carré p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Button Styles */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Delete Button */
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.btn-delete:hover {
+    background-color: #e53935;
+}
+
+/* Styles pour la croix de suppression */
+.carré {
+    position: relative; /* Pour positionner les éléments à l'intérieur */
+}
+
+.carré .btn-delete {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.carré .btn-delete:hover {
+    background-color: darkred;
+}

@@ -1,0 +1,181 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f4f4f4;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 100vh;
+    position: relative;
+    background-color: #ffffff !important;
+}
+
+.sidebar-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*font-size: 1.5rem;*/
+    margin-bottom: 20px;
+}
+
+.logo-sidebar {
+    width: 100px;  
+    height: auto;
+    margin-bottom: 10px;  
+}
+
+
+.sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    margin: 10px 0;
+}
+
+.sidebar-menu li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #f1f1f1;
+}
+
+.submenu {
+    list-style-type: none;
+    padding-left: 15px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.main-header h1 {
+    font-size: 24px;
+}
+
+.action-buttons button:hover {
+    background-color: #ddd;
+}
+
+.form_utilisateurediter form {
+	display: inline;	
+}
+
+/* Table Section */
+.table-section {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead th {
+    background-color: #f5f5f5;
+    padding: 12px;
+    text-align: left;
+}
+
+table tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+table tbody td button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+/* Back Button */
+
+.back-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+    background-color: transparent; 
+    border: none; 
+    color: red; 
+    font-size: 30px; 
+    cursor: pointer;  
+    padding: 0 10px; 
+}
+
+.btn-delete:hover {
+    color: darkred; 
+}
+
+.action-button {
+    padding: 8px 18px; 
+    margin-left: 10px;
+    border: none;
+    color: white;
+    background-color: #007bff; 
+    border-radius: 5px;
+    font-size: 14px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #0056b3; 
+}
+
+.add-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    color: white;
+    background-color: #28a745; 
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: #218838;
+}

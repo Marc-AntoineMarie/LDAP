@@ -1,0 +1,249 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: white;
+    color: #333;
+}
+
+/* Logo Styles */
+.logo img {
+    width: 100px;
+}
+
+.container-body {
+    margin-left: 15%;
+    margin-right: 15%; 
+    margin-top: 0%;
+}
+
+header {
+    display: flex;
+    justify-content: flex-start;  
+    align-items: center;          
+    padding: 40px;
+    background-color: white;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    margin: 20px 0;
+}
+
+.hero h1 {
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(270deg, 
+        #4B0082,  /* Indigo */
+        #800000,  /* Dark Red */
+        #B22222,  /* FireBrick */
+        #CD5C5C,  /* Indian Red */
+        #FF4500,  /* Orange Red */
+        #FFA500   /* Orange */
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: gradientFlow 8s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.hero .subtitle {
+    font-size: 20px;
+    color: #555;
+    font-weight: 300;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#animatedText {
+    font-size: 32px;
+    font-weight: 600;
+    background: linear-gradient(90deg, 
+        #FF8008, #FFC837, #FF512F, #F09819, #FF8008);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 8s ease infinite;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+/* Partners Section */
+.partners {
+    padding: 50px;
+}
+
+.partners h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.container-carré {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.carré {
+    display: block;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+}
+
+.carré:hover {
+    transform: scale(1.05);
+}
+
+.carré img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.carré p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+/* Style de base pour la modal */
+/* Style de base pour la modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;  /* largeur ajustée pour correspondre au deuxième CSS */
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: modalAppear 0.3s ease-out;
+}
+
+/* Styles pour les éléments internes de la modal */
+.modal-content input, 
+.modal-content select { 
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.modal-content textarea { 
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.modal-content h2 {
+    margin-bottom: 30px;
+}
+
+.modal-content label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+/* Bouton de fermeture */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

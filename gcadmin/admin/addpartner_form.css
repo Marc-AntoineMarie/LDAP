@@ -1,0 +1,240 @@
+.btn-gradient, .title-gradient {
+    color: #fff; /* Couleur du texte */
+    border: none; /* Vous pouvez personnaliser la bordure si besoin */
+    background: linear-gradient(270deg, 
+      #4B0082,  /* Indigo */
+      #800000,  /* Dark Red */
+      #B22222,  /* FireBrick */
+      #CD5C5C,  /* Indian Red */
+      #FF4500,  /* Orange Red */
+      #FFA500   /* Orange */
+    );
+    background-size: 300% 300%;
+    animation: gradientFlow 8s ease infinite; 
+  }
+  
+  .custom-header {
+    padding: 1.8rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-radius: calc(0.5rem - 1px) calc(0.5rem - 1px) 0 0;
+    background: linear-gradient(270deg, 
+      #4B0082,  /* Indigo */
+      #800000,  /* Dark Red */
+      #B22222,  /* FireBrick */
+      #CD5C5C,  /* Indian Red */
+      #FF4500,  /* Orange Red */
+      #FFA500   /* Orange */
+    );
+    background-size: 300% 300%;
+    animation: gradientFlow 8s ease infinite;
+  }
+  
+  .custom-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  .title-gradient {
+    background: linear-gradient(270deg, 
+      #4B0082,  /* Indigo */
+      #800000,  /* Dark Red */
+      #B22222,  /* FireBrick */
+      #CD5C5C,  /* Indian Red */
+      #FF4500,  /* Orange Red */
+      #FFA500   /* Orange */
+    );
+    background-size: 300% 300%;
+    animation: gradientFlow 8s ease infinite; 
+  }
+  
+  @keyframes gradientFlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes inputPulse {
+    0% {
+      transform: scale(1) translateY(0);
+    }
+    50% {
+      transform: scale(1.02) translateY(-2px);
+    }
+    100% {
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --background-size: unquote("min(100vw, 40em)");
+  }
+  
+  html {
+    font-size: calc(100% + 0.5vw);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition-duration: 0.001s !important;
+    }
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 650px !important;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 1.5rem !important;
+    margin: auto;
+  }
+
+  form {
+    width: 20rem;
+  }
+
+  .input-group {
+    width: 100%;
+    max-width: 22em;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    margin-bottom: 1.2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @supports (mix-blend-mode: darken) {
+    .input-group {
+      position: relative;
+      mix-blend-mode: normal;
+    }
+    .input-group__label {
+      position: absolute;
+      left: 3em;
+      top: -0.28em;
+      background: #ffffff;
+    }
+  }
+
+  .input-group__label {
+    padding: 0 0.8em;
+    margin-bottom: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    letter-spacing: 0.1em;
+    color: #333;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .input-group__input,
+  .input-group input[type="text"],
+  .input-group input[type="email"],
+  .input-group input[type="tel"],
+  .input-group textarea {
+    color: #333;
+    font-size: 0.95rem;
+    line-height: 1;
+    border-style: none;
+    outline: none;
+    height: calc(1.8em + 0.2em + 1.4em);
+    width: 100%;
+    padding: 0.5em 1em;
+    border: 0.2em solid transparent;
+    background-image: linear-gradient(#fff, #fff), 
+      linear-gradient(270deg, 
+        #400000,  /* Rouge bordeaux très foncé */
+        #800000,  /* Bordeaux */
+        #8B0000,  /* Dark Red */
+        #960018,  /* Carmine */
+        #AA0000,  /* Rouge bordeaux */
+        #B22222   /* Fire Brick */
+      );
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 2em !important;
+    background-size: 200% 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .input-group__input:hover,
+  .input-group input:hover,
+  .input-group textarea:hover {
+    background-position: 100% 0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(128, 0, 0, 0.15);
+  }
+
+  .input-group__input:focus,
+  .input-group input:focus,
+  .input-group textarea:focus {
+    animation: inputPulse 0.5s ease-in-out;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+    background-position: 100% 0;
+  }
+
+  .input-group__input:active,
+  .input-group input:active,
+  .input-group textarea:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(128, 0, 0, 0.1);
+  }
+
+  .input-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    padding: 0.9em 1.1em;
+  }
+
+  .invalid-feedback {
+    color: #FF4500;
+    font-size: 0.75em;
+    margin-top: 0.4em;
+    margin-left: 1.2em;
+  }
+
+  /* Style du bouton avec animation hover */
+  .btn-gradient {
+    transition: all 0.3s ease;
+    transform-origin: center;
+    padding: 0.6em 1.5em;  
+    border-radius: 6px;
+    font-size: 0.7em;
+    cursor: pointer;
+  }
+
+  .btn-gradient:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-gradient:active {
+    transform: scale(0.98);
+  }
